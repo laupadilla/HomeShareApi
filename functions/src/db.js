@@ -19,4 +19,4 @@ const db = firebase.database();
 
 module.exports = {
 	db,
-}
+} 
