@@ -6,7 +6,7 @@ const {
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   // res.render('index', { title: 'Api HomeShareBackend' });
   console.log("HTTP Get Request");
 	var userReference = db.ref("/Users/");
@@ -22,6 +22,12 @@ router.get('/', function(req, res, next) {
       //console.log("The read failed: " + errorObject.code);
         res.send("The read failed: " + errorObject.code);
       });
+});
+
+router.post('/', function(req, res){
+  let variavelTeste = req.body.Name;
+  
+  console.log(variavelTeste);
 });
 
 module.exports = router;
