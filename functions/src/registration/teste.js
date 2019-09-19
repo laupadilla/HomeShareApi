@@ -2,7 +2,8 @@ const {
 	db,
 } = require('../../src/db');
 
-const houseRegister = (req, res) => {
+
+const teste = (req, res) => {
 	let data = {
 		Name: req.body.houseName,
 		Description: req.body.houseDescription,
@@ -52,4 +53,4 @@ const houseRegister = (req, res) => {
 	});
 };
 
-module.exports = houseRegister;
+module.exports = teste;
