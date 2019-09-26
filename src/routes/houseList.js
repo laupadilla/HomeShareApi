@@ -6,6 +6,9 @@ const {
 
 
 router.get('/', function(req, res) {
+	
+
+
 	let id = req.headers['house-id'];
 	let houseRef = db.ref('Houses/' + id);
 

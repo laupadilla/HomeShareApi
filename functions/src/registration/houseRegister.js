@@ -29,7 +29,7 @@ const houseRegister = (req, res) => {
 	let newHouseKey = db.ref().child('Houses').push().key;
 	let updates = {};
 
-	updates['/Houses/' + newHouseKey] = data;	
+	updates['/Houses/' + newHouseKey] = data;
 
 	db.ref().update(updates).then(response => {
 		console.log('Synchronization succeeded');

@@ -1,54 +1,29 @@
 const {
 	db,
 } = require('../../src/db');
+const admin = require('firebase-admin');
 
 
 const teste = (req, res) => {
-	let data = {
-		Name: req.body.houseName,
-		Description: req.body.houseDescription,
-		RoomIndividual: req.body.houseRoomIndividual,
-		People: req.body.housePeople,
-		Address: req.body.houseAddress,
-		Price: req.body.housePrice,
-		Pets: req.body.housePets,
-		BillList: {
-			Fixed: {
-				Rent: 0,
-				Light: 0,
-				Water: 0
-			},
-			Variable: {
-				"Mercado": 50.00
-			}
-		},
-		Tasks: {
-			"Tarefa de Exemplo": "Exemplo"
-		}
-	  };
-	
-	let newHouseKey = db.ref().child('Houses').push().key;
-	let updates = {};
+	// idToken comes from the client app
+	let idToken = req.body.idToken;
 
-	updates['/Houses/' + newHouseKey] = data;	
-
-	db.ref().update(updates).then(response => {
-		console.log('Synchronization succeeded');
+	admin.auth().verifyIdToken(idToken)
+	.then(function(decodedToken) {
+		let uid = decodedToken.uid;
 		res.json(
-			{ 
-				status: 'Ok',
-				idHouse: newHouseKey
-			});
+		{ 
+			status: 'Autenticado',
+			idToken: uid
+		});
 
-		return 'Ok';
-	})
-	.catch(response => {
-		console.log('Synchronization failed');
+		return 'ok';
+	}).catch(function(error) {
 		res.json(
-			{ 
-				status: 'erro - ' + response.message 
-			});
-
+		{ 
+			status: 'Erro',
+			mensagem: error
+		});
 		return 'erro';
 	});
 };

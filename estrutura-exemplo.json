@@ -1,0 +1,115 @@
+{
+	"Casas":
+	[
+		{
+			"Id3":{				
+				"Pessoas":[],
+				"Endereço": "Rua exemplo, Jardim exemplo, Nº 123",
+				"Qnt de Quartos": 2,
+				"Vagas Garagem": 2,
+				"Contas": [
+					{
+						"Categoria": "Mensal",
+						"Membros": ["Id1", "Id2", "Id3"],
+						"Vencimento": "20/10/2019",
+						"Descrição": "Conta de aluguel do apartamento",
+						"Valor total": 500.00
+					},
+					{
+						"Categoria": "Única",
+						"Membros": ["Id1", "Id3"],
+						"Vencimento": "28/09/2019",
+						"Descrição": "Conta mercado produtos da casa",
+						"Valor total": 15.20
+					}
+				],
+				"Tarefas":[
+					{
+						"Nome": "Lavar Louça",
+						"Tipo Frequência": "Semanal",
+						"Dias Selecionados": ["23/09/2019 - Segunda-Feira", "25/09/2019 - Quarta-Feira", "27/09/2019 - Sexta-Feira"],
+						"Usuário Responsável": "Id1"
+					},
+					{
+						"Nome": "Lavar Louça",
+						"Tipo Frequência": "Quinzenal",
+						"Dias Selecionados": ["07/10/2019 - Segunda-Feira", "21/09/2019 - Segunda-Feira"],
+						"Usuário Responsável": "Id2"
+					},
+					{
+						"Nome": "Lavar Louça",
+						"Tipo Frequência": "Mensal",
+						"Dias Selecionados": ["23/09/2019 - Segunda-Feira", "23/10/2019 - Quarta-Feira"],
+						"Usuário Responsável": "Id3"
+					}
+				],
+				"Anúncio": 
+				{
+					"Título": "República Facens Aqui tem Engenharia e Festinha",
+					"Qtd de pessoas": 10,
+					"Descrição": "Descrição república",
+					"Tipo do quarto": "Individual/Compartilhado",
+					"Sexo": "Fem",
+					"Pets": true,
+					"Cidade": "Sorocaba",
+					"Estado": "SP",
+					"Endereço": "Rua exemplo, Jardim exemplo, Nº 123",
+					"Valor Médio": 430.00
+				}
+			}
+		}
+	],
+	"Anúncios":
+	[
+		{
+			"Id1":{
+				"Título": "República Facens Aqui tem Engenharia e Festinha",
+				"Qtd de pessoas": 10,
+				"Descrição": "Descrição república",
+				"Tipo do quarto": "Individual/Compartilhado",
+				"Sexo": "Fem",
+				"Pets": true,
+				"Cidade": "Sorocaba",
+				"Estado": "SP",
+				"Endereço": "Rua exemplo, Jardim exemplo, Nº 123",
+				"Valor Médio": 430.00
+			}
+		}
+	],
+	"Usuários":
+	[
+		{
+			"Id1":{
+				"Nome Completo": "Laura Gerevini Padilla",
+				"Nome de Usuário": "laura",
+				"E-mail": "laura@email.com",
+				"Senha": "senha criptografada",
+				"Id Casa": "Id1",
+				"Tarefas": [
+					{
+						"Nome": "Lavar Louça",
+						"Tipo Frequência": "Semanal",
+						"Dias Selecionados": ["23/09/2019 - Segunda-Feira", "25/09/2019 - Quarta-Feira", "27/09/2019 - Sexta-Feira"],
+						"Usuário Responsável": "Id1"
+					}
+				],
+				"Contas": [
+					{
+						"Categoria": "Mensal",
+						"Membros": ["Id1", "Id2", "Id3"],
+						"Vencimento": "20/10/2019",
+						"Descrição": "Conta de aluguel do apartamento",
+						"Valor total": 500.00
+					},
+					{
+						"Categoria": "Única",
+						"Membros": ["Id1", "Id3"],
+						"Vencimento": "28/09/2019",
+						"Descrição": "Conta mercado produtos da casa",
+						"Valor total": 15.20
+					}
+				]
+			}
+		}
+	]
+}
