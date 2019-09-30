@@ -10,7 +10,7 @@ const houseListById = (req, res) => {
 
 	let houseRef = db.ref('Houses/' + id);
 
-	houseRef.once('value')
+	houseRef.once('value') 
 	.then(function(snapshot) {
 		res.json(snapshot.val());
 
