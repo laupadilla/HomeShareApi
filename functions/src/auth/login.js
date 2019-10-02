@@ -4,7 +4,7 @@ const {
 const admin = require('firebase-admin');
 
 
-const teste = (req, res) => {
+const login = (req, res) => {
 	// idToken comes from the client app
 	let idToken = req.body.idToken;
 
@@ -28,4 +28,4 @@ const teste = (req, res) => {
 	});
 };
 
-module.exports = teste;
+module.exports = login;
