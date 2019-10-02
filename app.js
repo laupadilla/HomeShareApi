@@ -11,6 +11,8 @@ const houseRegisterRouter = require('./src/routes/houseRegister');
 const houseUpdateRouter = require('./src/routes/houseUpdate');
 const houseListRouter = require('./src/routes/houseList');
 const billsRouter = require('./src/routes/bills');
+const userRegisterRouter = require('./src/routes/register/user');
+const userDetailRouter = require('./src/routes/detail/user');
 
 const app = express();
 
@@ -31,6 +33,8 @@ app.use('/houseRegister', houseRegisterRouter);
 app.use('/houseUpdate', houseUpdateRouter);
 app.use('/houseList', houseListRouter);
 app.use('/bills', billsRouter);
+app.use('/userRegister', userRegisterRouter);
+app.use('/userDetail', userDetailRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -84,6 +84,7 @@
 				"Nome de Usuário": "laura",
 				"E-mail": "laura@email.com",
 				"Senha": "senha criptografada",
+				"Data Nascimento": "14/11/1995",
 				"Id Casa": "Id1",
 				"Tarefas": [
 					{

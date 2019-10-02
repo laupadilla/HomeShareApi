@@ -5,7 +5,6 @@ const admin = require('firebase-admin');
 
 
 const login = (req, res) => {
-	// idToken comes from the client app
 	let idToken = req.body.idToken;
 
 	admin.auth().verifyIdToken(idToken)
