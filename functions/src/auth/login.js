@@ -3,7 +3,6 @@ const {
 } = require('../../src/db');
 const admin = require('firebase-admin');
 
-
 const login = (req, res) => {
 	let idToken = req.body.idToken;
 
@@ -23,6 +22,7 @@ const login = (req, res) => {
 			status: 'Erro',
 			mensagem: error
 		});
+		
 		return 'erro';
 	});
 };

@@ -1,12 +1,9 @@
-const express = require('express');
-const router = express.Router();
 const {
 	db,
-} = require('../../public/javascripts/db');
+} = require('../../src/db');
 
-//update user
-router.post('/', function(req, res) {
-    let data = {
+const userUpdate = (req, res) => {
+	let data = {
 		NomeCompleto: req.body.nomecompleto,
 		NomeUsuario: req.body.nomeusuario,
 		Email: req.body.email,
@@ -37,6 +34,6 @@ router.post('/', function(req, res) {
 
 		return 'erro';
 	});
-  });
-  
-  module.exports = router;
+};
+
+module.exports = userUpdate;

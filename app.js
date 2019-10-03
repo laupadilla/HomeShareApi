@@ -7,12 +7,13 @@ const logger = require('morgan');
 const indexRouter = require('./src/routes/index');
 const usersRouter = require('./src/routes/users');
 const loginRouter = require('./src/routes/login');
-const houseRegisterRouter = require('./src/routes/houseRegister');
+const houseRegisterRouter = require('./src/routes/register/house');
 const houseUpdateRouter = require('./src/routes/houseUpdate');
 const houseListRouter = require('./src/routes/houseList');
 const billsRouter = require('./src/routes/bills');
 const userRegisterRouter = require('./src/routes/register/user');
 const userDetailRouter = require('./src/routes/detail/user');
+const userUpdateRouter = require('./src/routes/update/user');
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use('/houseList', houseListRouter);
 app.use('/bills', billsRouter);
 app.use('/userRegister', userRegisterRouter);
 app.use('/userDetail', userDetailRouter);
+app.use('/userUpdate', userUpdateRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

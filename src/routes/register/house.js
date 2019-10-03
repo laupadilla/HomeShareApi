@@ -1,8 +1,10 @@
+const express = require('express');
+const router = express.Router();
 const {
 	db,
-} = require('../../src/db');
+} = require('../../public/javascripts/db');
 
-const houseRegister = (req, res) => {
+router.post('/', function(req, res) {
 	let data = {
 		Pessoas: req.body.pessoas,
 		Endereco: req.body.endereco,
@@ -19,6 +21,7 @@ const houseRegister = (req, res) => {
 	updates['/Casas/' + newHouseKey] = data;	
 
 	db.ref().update(updates).then(response => {
+		console.log('Synchronization succeeded');
 		res.json(
 			{ 
 				status: 'Ok',
@@ -28,6 +31,7 @@ const houseRegister = (req, res) => {
 		return 'Ok';
 	})
 	.catch(response => {
+		console.log('Synchronization failed');
 		res.json(
 			{ 
 				status: 'erro - ' + response.message 
@@ -35,6 +39,6 @@ const houseRegister = (req, res) => {
 
 		return 'erro';
 	});
-};
-
-module.exports = houseRegister;
+  });
+  
+  module.exports = router;
