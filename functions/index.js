@@ -11,8 +11,8 @@ const userUpdate = require('./src/update/user');
 
 //Funções - House Config
 const houseRegister = require('./src/registration/house');
+const houseList = require('./src/list/house');
 
-const houseList = require('./src/registration/houseList');
 const houseUpdate = require('./src/registration/houseUpdate');
 const teste = require('./src/registration/teste');
 

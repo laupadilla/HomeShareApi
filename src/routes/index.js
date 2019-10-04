@@ -30,10 +30,4 @@ router.post('/', function(req, res) {
   });
 });
 
-// router.post('/', function(req, res){
-//   let variavelTeste = req.body.Name;
-  
-//   console.log(variavelTeste);
-// });
-
 module.exports = router;

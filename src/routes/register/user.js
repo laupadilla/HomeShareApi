@@ -3,48 +3,63 @@ const router = express.Router();
 const {
 	db,
 } = require('../../public/javascripts/db');
-
+const admin = require('firebase-admin');
 
 router.post('/', function(req, res) {
-    
-    if(req.body.senha !== req.body.confirmacaosenha){
-        res.json({ status: 'Confirmação de senha não corresponde!'});
-        return 'erro';
-    }
-    
-    let data = {
-		NomeCompleto: req.body.nomecompleto,
-		NomeUsuario: req.body.nomeusuario,
-		Email: req.body.email,
-        Senha: req.body.senha,
-        ConfirmacaoSenha: req.body.confirmacaosenha,
-		DataNascimento: req.body.datanascimento,
-		Estado: req.body.estado,
-		Cidade: req.body.cidade
-    };
-	
-	let newUserKey = db.ref().child('Usuarios').push().key;
-	let updates = {};
 
-	updates['/Usuarios/' + newUserKey] = data;	
+  admin.auth()
+  	.verifyIdToken(req.body.idToken)
+	.then(function(decodedToken) {
+    	let uid = decodedToken.uid;
+		
+		// if(req.body.senha !== req.body.confirmacaosenha){
+		// 	res.json({ status: 'Confirmação de senha não corresponde!'});
+		// 	return 'erro';
+		// }
+		let data = {
+			NomeCompleto: req.body.nomecompleto,
+			NomeUsuario: req.body.nomeusuario,
+			Email: req.body.email,
+			Senha: req.body.senha,
+			ConfirmacaoSenha: req.body.confirmacaosenha,
+			DataNascimento: req.body.datanascimento,
+			Estado: req.body.estado,
+			Cidade: req.body.cidade
+		};
 
-	db.ref().update(updates).then(response => {
+		let updates = {};
+		updates['/Usuarios/' + uid] = data;	
+		
+		db.ref().update(updates).then(response => {
+			res.json(
+				{ 
+					status: 'Ok',
+					idUser: uid
+				});
+		})
+		.catch(response => {
+			res.json(
+				{ 
+					status: 'erro - ' + response.message 
+				});
+		});
+		
 		res.json(
-			{ 
-				status: 'Ok',
-				idUser: newUserKey
-			});
+		{ 
+			status: 'Autenticado',
+			idToken: uid
+		});
 
-		return 'Ok';
-	})
-	.catch(response => {
+		return 'ok';
+	}).catch(function(error) {
 		res.json(
-			{ 
-				status: 'erro - ' + response.message 
-			});
+		{ 
+			status: 'Erro',
+			mensagem: error
+		});
 
 		return 'erro';
-	});
   });
+});
   
   module.exports = router;
