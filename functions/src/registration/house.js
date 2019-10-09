@@ -5,12 +5,17 @@ const {
 const houseRegister = (req, res) => {
 	let data = {
 		Pessoas: req.body.pessoas,
-		Endereco: req.body.endereco,
-		Quartos: req.body.qtdquartos,
+		Apelido: req.body.apelido,
+		Descricao: req.body.descricao,
+		Cidade: req.body.cidade,
+		Capacidade: req.body.capacidade,
+		Genero: req.body.genero,
+		Quarto: req.body.quarto,
+		Pets: req.body.pets,
 		VagasGaragem: req.body.vagasgaragem,
-		Contas: req.body.contas,
-		Tarefas: req.body.tarefas,
-		Anuncio: req.body.anuncio
+		Contas: false, 
+		Tarefas: false,
+		Anuncio: false
 	  };
 	
 	let newHouseKey = db.ref().child('Casas').push().key;
@@ -19,6 +24,7 @@ const houseRegister = (req, res) => {
 	updates['/Casas/' + newHouseKey] = data;	
 
 	db.ref().update(updates).then(response => {
+		console.log('Synchronization succeeded');
 		res.json(
 			{ 
 				status: 'Ok',
@@ -28,6 +34,7 @@ const houseRegister = (req, res) => {
 		return 'Ok';
 	})
 	.catch(response => {
+		console.log('Synchronization failed');
 		res.json(
 			{ 
 				status: 'erro - ' + response.message 
