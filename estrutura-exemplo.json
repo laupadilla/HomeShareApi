@@ -3,7 +3,7 @@
 	[
 		{
 			"Id3":{				
-				"Pessoas":[],
+				"Pessoas":["uid1", "uid2"],
 				"Endereço": "Rua exemplo, Jardim exemplo, Nº 123",
 				"Qnt de Quartos": 2,
 				"Vagas Garagem": 2,
@@ -111,6 +111,18 @@
 					}
 				]
 			}
+		}
+	],
+	"PendenteCadastro": [
+		{
+			"IdCasa": [
+				"Email1", "Email2"
+			]
+		},
+		{
+			"IdCasa2": [
+				"Email3", "Email4", "Email5"
+			]
 		}
 	]
 }
