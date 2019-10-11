@@ -49,7 +49,7 @@ const houseRegister = (req, res) => {
 			res.json({ status: 'erro - ' + response.message });
 			return 'erro';
 		});
-	}, 1000);
+	}, 2000);
 };
 
 module.exports = houseRegister;

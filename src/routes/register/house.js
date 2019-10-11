@@ -54,7 +54,7 @@ router.post('/', function(req, res) {
 			return 'erro';
 		});
 
-	}, 1000);
+	}, 2000);
 
   });
   
