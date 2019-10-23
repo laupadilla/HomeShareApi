@@ -24,39 +24,26 @@ router.post('/', function(req, res) {
 			ConfirmacaoSenha: req.body.confirmacaosenha,
 			DataNascimento: req.body.datanascimento,
 			Estado: req.body.estado,
-			Cidade: req.body.cidade
+			Cidade: req.body.cidade,
+			IdCasa: false,
+			Chat: false
 		};
 
 		let updates = {};
-		updates['/Usuarios/' + uid] = data;	
+		updates['/Usuarios/' + uid] = data;
 		
 		db.ref().update(updates).then(response => {
-			res.json(
-				{ 
-					status: 'Ok',
-					idUser: uid
-				});
+			res.json({ status: 'Ok', idUser: uid });
 		})
 		.catch(response => {
-			res.json(
-				{ 
-					status: 'erro - ' + response.message 
-				});
+			res.json({ status: 'erro - ' + response.message });
 		});
 		
-		res.json(
-		{ 
-			status: 'Autenticado',
-			idToken: uid
-		});
+		res.json({ status: 'Autenticado', idToken: uid });
 
 		return 'ok';
 	}).catch(function(error) {
-		res.json(
-		{ 
-			status: 'Erro',
-			mensagem: error
-		});
+		res.json({ status: 'Erro', mensagem: error });
 
 		return 'erro';
   });
