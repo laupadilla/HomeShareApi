@@ -12,6 +12,7 @@ const userUpdate = require('./src/update/user');
 //Funções - House Config
 const houseRegister = require('./src/registration/house');
 const houseList = require('./src/list/house');
+const houseDetail = require('./src/detail/house');
 
 const houseUpdate = require('./src/registration/houseUpdate');
 const teste = require('./src/registration/teste');
@@ -20,6 +21,7 @@ module.exports = {
 	'houseRegister': functions.https.onRequest(houseRegister),
 	'houseList': functions.https.onRequest(houseList),
 	'houseUpdate': functions.https.onRequest(houseUpdate),
+	'houseDetail': functions.https.onRequest(houseDetail),
 	'teste': functions.https.onRequest(teste),
 	'login': functions.https.onRequest(login),
 	'userRegister': functions.https.onRequest(userRegister),
