@@ -14,6 +14,11 @@ const houseRegister = require('./src/registration/house');
 const houseList = require('./src/list/house');
 const houseDetail = require('./src/detail/house');
 
+//Funções - Card Config
+const cardRegister = require('./src/registration/card');
+const cardDetail = require('./src/detail/card');
+const cardList = require('./src/list/card');
+
 const houseUpdate = require('./src/registration/houseUpdate');
 const teste = require('./src/registration/teste');
 
@@ -27,4 +32,7 @@ module.exports = {
 	'userRegister': functions.https.onRequest(userRegister),
 	'userDetail': functions.https.onRequest(userDetail),
 	'userUpdate': functions.https.onRequest(userUpdate),
+	'cardRegister': functions.https.onRequest(cardRegister),
+	'cardDetail': functions.https.onRequest(cardDetail),
+	'cardList': functions.https.onRequest(cardList)
 };
