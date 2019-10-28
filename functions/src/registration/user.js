@@ -23,44 +23,53 @@ const userRegister = (req, res) => {
 			if(idCasa !== null){
 				casaParam = idCasa;
 				db.ref('/Casas/' + casaParam + '/Pessoas/').push(uid);
-				pendenteCadastroRef.child(casaParam).remove();
+				let pendenteCadastroRemoveRef = db.ref('/PendenteCadastro/' + casaParam);
+				pendenteCadastroRemoveRef.remove();
 			}
-			return 'ok';
-		})
-		.catch(response => {console.log('erro');
-			return 'erro';
-		});
-		
-		let data = {
-			NomeCompleto: req.body.nomecompleto,
-			NomeUsuario: req.body.nomeusuario,
-			Email: req.body.email,
-			Senha: req.body.senha,
-			ConfirmacaoSenha: req.body.confirmacaosenha,
-			DataNascimento: req.body.datanascimento,
-			Estado: req.body.estado,
-			Cidade: req.body.cidade,
-			IdCasa: casaParam,
-			Chats: false
-		};
 
-		let updates = {};
-		updates['/Usuarios/' + uid] = data;
-		
-		db.ref().update(updates).then(response => {
-			res.json({ status: 'ok', idUser: uid });
+			setTimeout(()=>{
+				let data = {
+					NomeCompleto: req.body.nomecompleto,
+					NomeUsuario: req.body.nomeusuario,
+					Email: req.body.email,
+					Senha: req.body.senha,
+					ConfirmacaoSenha: req.body.confirmacaosenha,
+					DataNascimento: req.body.datanascimento,
+					Estado: req.body.estado,
+					Cidade: req.body.cidade,
+					idHouse: casaParam,
+					Chats: false
+				};
+				let updates = {};
+				updates['/Usuarios/' + uid] = data;
+	
+				db.ref().update(updates)
+				.then(response => {
+					res.json({ status: 'ok', idUser: uid });
+					return 'ok';
+				})
+				.catch(function(error) {
+					res.json({ status: 'Erro', mensagem: error });
+					return 'erro';
+				});
+				res.json({ status: 'Autenticado', idToken: uid });
+				return 'ok';
+	
+			}, 1000);
+
 			return 'ok';
 		})
-		.catch(response => {
-			res.json({ status: 'erro - ' + response.message });
+		.catch(function(error) {
+			res.json({ status: 'Erro', mensagem: error });
 			return 'erro';
 		});
-		res.json({ status: 'Autenticado', idToken: uid });
+		
 		return 'ok';
-	}).catch(function(error) {
+	})
+	.catch(function(error) {
 		res.json({ status: 'Erro', mensagem: error });
 		return 'erro';
-  });
+  	});
 };
 
 module.exports = userRegister;
