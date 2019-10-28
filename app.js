@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const index = require('./src/routes/index');
 const houseRegisterRouter = require('./src/routes/register/house');
 const houseListRouter = require('./src/routes/list/house');
 const houseDetailRouter = require('./src/routes/detail/house');
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'src/public')));
 
+app.use('/', index);
 app.use('/houseRegister', houseRegisterRouter);
 app.use('/houseList', houseListRouter);
 app.use('/houseDetail', houseDetailRouter);

@@ -8,12 +8,29 @@ const userRegister = (req, res) => {
 	admin.auth()
   	.verifyIdToken(req.body.idToken)
 	.then(function(decodedToken) {
-    	let uid = decodedToken.uid;
+    	let uid = decodedToken.uid,
+			pendenteCadastroRef = db.ref('/PendenteCadastro/'),
+			email = req.body.email,
+			idCasa = null,
+			casaParam = false;
+	
+		pendenteCadastroRef.once('value').then(dataSnapshot => {
+			Object.entries(dataSnapshot.val()).forEach(([key, value]) => {
+				if(value[0] === email){
+					idCasa = key;
+				}
+			});
+			if(idCasa !== null){
+				casaParam = idCasa;
+				db.ref('/Casas/' + casaParam + '/Pessoas/').push(uid);
+				pendenteCadastroRef.child(casaParam).remove();
+			}
+			return 'ok';
+		})
+		.catch(response => {console.log('erro');
+			return 'erro';
+		});
 		
-		// if(req.body.senha !== req.body.confirmacaosenha){
-		// 	res.json({ status: 'Confirmação de senha não corresponde!'});
-		// 	return 'erro';
-		// }
 		let data = {
 			NomeCompleto: req.body.nomecompleto,
 			NomeUsuario: req.body.nomeusuario,
@@ -23,45 +40,25 @@ const userRegister = (req, res) => {
 			DataNascimento: req.body.datanascimento,
 			Estado: req.body.estado,
 			Cidade: req.body.cidade,
-			idCasa: false,
+			IdCasa: casaParam,
 			Chats: false
 		};
 
 		let updates = {};
-		updates['/Usuarios/' + uid] = data;	
+		updates['/Usuarios/' + uid] = data;
 		
 		db.ref().update(updates).then(response => {
-			res.json(
-				{ 
-					status: 'Ok',
-					idUser: uid
-				});
-
-			return 'Ok';
+			res.json({ status: 'ok', idUser: uid });
+			return 'ok';
 		})
 		.catch(response => {
-			res.json(
-				{ 
-					status: 'erro - ' + response.message 
-				});
-
+			res.json({ status: 'erro - ' + response.message });
 			return 'erro';
 		});
-		
-		res.json(
-		{ 
-			status: 'Autenticado',
-			idToken: uid
-		});
-
+		res.json({ status: 'Autenticado', idToken: uid });
 		return 'ok';
 	}).catch(function(error) {
-		res.json(
-		{ 
-			status: 'Erro',
-			mensagem: error
-		});
-
+		res.json({ status: 'Erro', mensagem: error });
 		return 'erro';
   });
 };
