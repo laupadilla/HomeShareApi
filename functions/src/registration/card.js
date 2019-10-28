@@ -6,7 +6,8 @@ const admin = require('firebase-admin');
 const cardRegister = (req, res) => {
 	let data = {
         ValorMedio: req.body.valormedio,
-        Descricao: req.body.descricao
+        Descricao: req.body.descricao,
+        Imagem: req.body.imagem
 	};
     let cardRef = db.ref('Anuncios/' + req.body.idHouse);
 
