@@ -23,7 +23,8 @@ const userRegister = (req, res) => {
 			DataNascimento: req.body.datanascimento,
 			Estado: req.body.estado,
 			Cidade: req.body.cidade,
-			idChat: false
+			idCasa: false,
+			Chats: false
 		};
 
 		let updates = {};

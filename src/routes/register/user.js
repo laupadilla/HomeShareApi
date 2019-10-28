@@ -26,7 +26,7 @@ router.post('/', function(req, res) {
 			Estado: req.body.estado,
 			Cidade: req.body.cidade,
 			IdCasa: false,
-			Chat: false
+			Chats: false
 		};
 
 		let updates = {};

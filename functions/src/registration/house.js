@@ -63,6 +63,17 @@ const houseRegister = (req, res) => {
 			return 'erro';
 		});
 
+		db.ref('Usuarios/' + req.body.iduser)
+		.update({
+			idCasa: newHouseKey
+		})
+		.then(response => {
+			return 'Ok';
+		})
+		.catch(response => {
+			return 'erro';
+		});
+
 	}, 2000);
 };
 
