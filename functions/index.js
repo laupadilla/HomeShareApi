@@ -22,6 +22,9 @@ const cardList = require('./src/list/card');
 //Funções - Task Config
 const taskRegister = require('./src/registration/task');
 
+//Funções - Bill Config
+const billRegister = require('./src/registration/bill');
+
 const houseUpdate = require('./src/registration/houseUpdate');
 const teste = require('./src/registration/teste');
 
@@ -38,5 +41,6 @@ module.exports = {
 	'cardRegister': functions.https.onRequest(cardRegister),
 	'cardDetail': functions.https.onRequest(cardDetail),
 	'cardList': functions.https.onRequest(cardList),
-	'taskRegister': functions.https.onRequest(taskRegister)
+	'taskRegister': functions.https.onRequest(taskRegister),
+	'billRegister': functions.https.onRequest(billRegister)
 };
