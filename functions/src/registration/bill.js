@@ -8,19 +8,18 @@ const billRegister = (req, res) => {
         data = {
             Membros: req.body.membros,
             DiaVencimento: req.body.dia,
-            Titulo: req.body.titulo
+            Titulo: req.body.titulo,
+            ValoDividido: getPrice(parseFloat(req.body.valor), req.body.membros.length),
+            ValorTotal: req.body.valor
         };
 
     switch (categoria) {
         case 'Mensal':
             data.Categoria = 'Mensal';
-            data.Valor = req.body.valor;
             break;
     
         case 'Única':
             data.Categoria = 'Única';
-            data.ValorDividido = getPrice(parseFloat(req.body.valor), req.body.membros.length);
-            data.ValorTotal = req.body.valor;
             break;
     }
 
