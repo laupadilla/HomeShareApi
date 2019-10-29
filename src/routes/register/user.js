@@ -42,20 +42,32 @@ router.post('/', function(req, res) {
 					Chats: false
 				};
 				let updates = {};
+				let userObj = false;
 				updates['/Usuarios/' + uid] = data;
 	
 				db.ref().update(updates)
 				.then(response => {
-					res.json({ status: 'ok', idUser: uid });
+					let query = db.ref('/Usuarios/' + uid);
+					
+					query.once('value').then(dataSnapshot => {
+						userObj = dataSnapshot.val();
+						return 'ok';
+					})
+					.catch(response => {
+						res.json({ status: 'erro - ' + response.message });
+						return 'erro';
+					});
 					return 'ok';
 				})
 				.catch(function(error) {
 					res.json({ status: 'Erro', mensagem: error });
 					return 'erro';
 				});
-				res.json({ status: 'Autenticado', idToken: uid });
-				return 'ok';
-	
+				
+				setTimeout(()=>{
+					res.json({ user: userObj, id: uid });
+					return 'ok';
+				}, 500);
 			}, 1000);
 
 			return 'ok';
