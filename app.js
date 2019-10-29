@@ -14,6 +14,9 @@ const userUpdateRouter = require('./src/routes/update/user');
 const cardRegisterRouter = require('./src/routes/register/card');
 const cardDetailRouter = require('./src/routes/detail/card');
 const cardListRouter = require('./src/routes/list/card');
+const taskRegisterRouter = require('./src/routes/register/task');
+
+const usersByIdRouter = require('./src/routes/list/usersById');
 
 const app = express();
 
@@ -37,6 +40,9 @@ app.use('/userUpdate', userUpdateRouter);
 app.use('/cardRegister', cardRegisterRouter);
 app.use('/cardDetail', cardDetailRouter);
 app.use('/cardList', cardListRouter);
+app.use('/taskRegister', taskRegisterRouter);
+
+app.use('/usersById', usersByIdRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -19,6 +19,9 @@ const cardRegister = require('./src/registration/card');
 const cardDetail = require('./src/detail/card');
 const cardList = require('./src/list/card');
 
+//Funções - Task Config
+const taskRegister = require('./src/registration/task');
+
 const houseUpdate = require('./src/registration/houseUpdate');
 const teste = require('./src/registration/teste');
 
@@ -34,5 +37,6 @@ module.exports = {
 	'userUpdate': functions.https.onRequest(userUpdate),
 	'cardRegister': functions.https.onRequest(cardRegister),
 	'cardDetail': functions.https.onRequest(cardDetail),
-	'cardList': functions.https.onRequest(cardList)
+	'cardList': functions.https.onRequest(cardList),
+	'taskRegister': functions.https.onRequest(taskRegister)
 };

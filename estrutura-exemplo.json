@@ -11,7 +11,7 @@
 					{
 						"Categoria": "Mensal",
 						"Membros": ["Id1", "Id2", "Id3"],
-						"Vencimento": "20/10/2019",
+						"Vencimento": "20",
 						"Descrição": "Conta de aluguel do apartamento",
 						"Valor total": 500.00
 					},
@@ -27,14 +27,8 @@
 					{
 						"Nome": "Lavar Louça",
 						"Tipo Frequência": "Semanal",
-						"Dias Selecionados": ["23/09/2019 - Segunda-Feira", "25/09/2019 - Quarta-Feira", "27/09/2019 - Sexta-Feira"],
+						"Dias Selecionados": ["23/09/2019"],
 						"Usuário Responsável": "Id1"
-					},
-					{
-						"Nome": "Lavar Louça",
-						"Tipo Frequência": "Quinzenal",
-						"Dias Selecionados": ["07/10/2019 - Segunda-Feira", "21/09/2019 - Segunda-Feira"],
-						"Usuário Responsável": "Id2"
 					},
 					{
 						"Nome": "Lavar Louça",
