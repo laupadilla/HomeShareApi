@@ -3,7 +3,7 @@ const {
 } = require('../../src/db');
 
 const houseDetail = (req, res) => {
-	let query = db.ref('/Casas/' + req.body.idCasa);	
+	let query = db.ref('/Casas/' + req.body.idHouse);	
 	
     query.once('value').then(dataSnapshot => {
         let data = dataSnapshot.val();

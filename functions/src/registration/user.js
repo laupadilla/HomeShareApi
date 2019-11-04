@@ -11,17 +11,17 @@ const userRegister = (req, res) => {
     	let uid = decodedToken.uid,
 			pendenteCadastroRef = db.ref('/PendenteCadastro/'),
 			email = req.body.email,
-			idCasa = null,
+			idHouse = null,
 			casaParam = false;
 	
 		pendenteCadastroRef.once('value').then(dataSnapshot => {
 			Object.entries(dataSnapshot.val()).forEach(([key, value]) => {
 				if(value[0] === email){
-					idCasa = key;
+					idHouse = key;
 				}
 			});
-			if(idCasa !== null){
-				casaParam = idCasa;
+			if(idHouse !== null){
+				casaParam = idHouse;
 				db.ref('/Casas/' + casaParam + '/Pessoas/').push(uid);
 				let pendenteCadastroRemoveRef = db.ref('/PendenteCadastro/' + casaParam);
 				pendenteCadastroRemoveRef.remove();

@@ -65,7 +65,7 @@ const houseRegister = (req, res) => {
 
 		db.ref('Usuarios/' + req.body.iduser)
 		.update({
-			idCasa: newHouseKey
+			idHouse: newHouseKey
 		})
 		.then(response => {
 			return 'Ok';
